@@ -13,7 +13,7 @@ var grow_time: int = 4
 # Different Sprites For Different Phases
 enum Growth {PLANTED, GROWING, GROWN}
 
-# Simplified Processing Only Runs When A Tick Defined In Plot Completes
+# Simplified Processing Only Runs When A Root Level Timer Finishes
 func _tick():
     # TODO
-    return
+    pass

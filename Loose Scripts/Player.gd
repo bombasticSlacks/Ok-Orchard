@@ -8,8 +8,13 @@ var upgrades: Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var timer = get_node("/root/Timer")
+	timer.timeout.connect(_tick)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
+
+# Simplified Processing Only Runs When A Root Level Timer Finishes
+func _tick():
 	pass

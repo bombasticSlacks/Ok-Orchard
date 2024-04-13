@@ -24,6 +24,10 @@ func _ready():
 	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
 
+	# Get a timer so we can register ticks
+	var timer = get_node("/root/Timer")
+	timer.timeout.connect(_tick)
+
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
@@ -40,7 +44,7 @@ func _physics_process(delta):
 		# If we are idle just skip movement
 		if (idle):
 			return
-		spend()
+		_spend()
 
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
@@ -48,10 +52,14 @@ func _physics_process(delta):
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
 
+# Simplified Processing Only Runs When A Root Level Timer Finishes
+func _tick():
+	pass
+
 # Think About Where To Go Next
-func think():
-	return
+func _think():
+	pass
 
 # Spend Money When Arriving
-func spend():
-	return
+func _spend():
+	pass
