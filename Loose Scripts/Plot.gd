@@ -4,7 +4,7 @@ class_name Plot extends StaticBody2D
 # Plots Have An Attraction
 var attraction: Attraction
 # Cost To Unlock
-@export var unlockCost: int
+@export var unlock_cost: int
 # If it is unlocked
 @export var unlocked: bool = false
 

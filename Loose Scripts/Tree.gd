@@ -2,13 +2,13 @@
 class_name AppleTree extends Attraction
 
 # How Many Apples Are On The Tree
-var appleCount: int = 0
+var apple_count: int = 0
 
 # How Long Till Apples Regrow
-var appleRegrowTime: int = 0
+var apple_regrow_time: int = 0
 
 # How long It Takes To Grow The Tree In Days
-var growTime: int = 4
+var grow_time: int = 4
 
 # Different Sprites For Different Phases
 enum Growth {PLANTED, GROWING, GROWN}
