@@ -16,4 +16,4 @@ func _ready():
 # Simplified Processing Only Runs When A Tick Defined In Plot Completes
 func _tick():
 	# Defined In Base Classes
-    pass
+	pass
