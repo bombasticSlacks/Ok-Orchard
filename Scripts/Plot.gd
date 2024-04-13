@@ -8,7 +8,7 @@ class_name Plot extends StaticBody2D
 # If this is built
 @export var built: bool = false
 # Plots Have An Attraction
-@onready var attraction: Attraction = $Attraction
+#@onready var attraction: Attraction = $Attraction
 
 # Has name through StaticBody2D
 
