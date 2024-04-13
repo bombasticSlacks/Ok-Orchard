@@ -1,9 +1,9 @@
 # A character moving around the orchard
 class_name Pawn extends CharacterBody2D
 # Speed Pawn Moves
-var movement_speed: float = 200.0
+var movement_speed: float = 40.0
 # Current Target Position
-var movement_target_position: Vector2 = Vector2(60.0, 180.0)
+@export var movement_target_position: Vector2 = Vector2(40.0, 500.0)
 var idle: bool = false
 
 # Our Navigation Routines
@@ -18,15 +18,15 @@ enum Mood {HUNGRY, UNINTERESTED, WALKER}
 func _ready():
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
-	navigation_agent.path_desired_distance = 4.0
-	navigation_agent.target_desired_distance = 4.0
+	navigation_agent.path_desired_distance = 0.5
+	navigation_agent.target_desired_distance = 0.5
 
 	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
 
 	# Get a timer so we can register ticks
 	var timer = get_node("/root/Timer")
-	timer.timeout.connect(_tick)
+	# timer.timeout.connect(_tick)
 
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.

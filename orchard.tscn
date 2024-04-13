@@ -1,26 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq131ceghv4bt"]
+[gd_scene load_steps=5 format=3 uid="uid://dq131ceghv4bt"]
 
 [ext_resource type="Texture2D" uid="uid://bcfcw44x0hgou" path="res://Assets/tiles.png" id="1_538gh"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_al0bk"]
+vertices = PackedVector2Array(32, 0, 0, 16, -32, 0, 0, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -16, 32, 0, 0, 16, -32, 0)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jl03t"]
 texture = ExtResource("1_538gh")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -16)
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.25, -12.5, 26, 0.25, 0, 13.25, -26, -0.5)
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, -16)
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_al0bk")
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, -16)
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(0, -16)
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.5, -13, 25.25, 0, 0.25, 12.75, -25.5, -0.5)
 4:0/0 = 0
 4:0/0/texture_origin = Vector2i(0, -16)
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_3knoq"]
 tile_shape = 1
 tile_layout = 5
 tile_offset_axis = 1
 tile_size = Vector2i(64, 32)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_jl03t")
 
 [node name="TileMap" type="TileMap"]
