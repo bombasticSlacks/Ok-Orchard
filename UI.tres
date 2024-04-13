@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cwbl52nbs5xti"]
+
+[ext_resource type="FontFile" uid="uid://bmnllfap33dd2" path="res://Assets/fonts/ArchivoNarrow-VariableFont_wght.ttf" id="1_h0hhi"]
+[ext_resource type="FontFile" uid="uid://cexk6d3v607b5" path="res://Assets/fonts/FjallaOne-Regular.ttf" id="2_buqil"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l6xw"]
+bg_color = Color(0.921569, 0.878431, 0.705882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tuxf"]
+bg_color = Color(0.957357, 0.866746, 0.68459, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxliq"]
+bg_color = Color(0.968627, 0.866667, 0.654902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85f1c"]
+bg_color = Color(0.94902, 0.882353, 0.552941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66spf"]
+bg_color = Color(0.922814, 0.879382, 0.704788, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uemqs"]
+bg_color = Color(0.94902, 0.882353, 0.552941, 1)
+
+[resource]
+Button/colors/font_color = Color(0.0196078, 0.0941176, 0.168627, 1)
+Button/colors/font_disabled_color = Color(0.266667, 0.298039, 0.596078, 1)
+Button/colors/font_focus_color = Color(0.94902, 0.603922, 0.94902, 1)
+Button/colors/font_hover_color = Color(0.0862745, 0.94902, 0.94902, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0.207843, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_h0hhi")
+Button/styles/disabled = SubResource("StyleBoxFlat_2l6xw")
+Button/styles/focus = SubResource("StyleBoxFlat_3tuxf")
+Button/styles/hover = SubResource("StyleBoxFlat_sxliq")
+Button/styles/normal = SubResource("StyleBoxFlat_85f1c")
+Button/styles/pressed = SubResource("StyleBoxFlat_66spf")
+ColorPickerButton/icons/bg = null
+LineEdit/fonts/font = ExtResource("2_buqil")
+Tree/styles/button_pressed = SubResource("StyleBoxFlat_uemqs")

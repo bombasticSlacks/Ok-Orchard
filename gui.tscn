@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0sb2680a1s1m"]
+
+[ext_resource type="Texture2D" uid="uid://ub7ikmhaxjfw" path="res://Assets/Icon/Dollars.png" id="1_55mpy"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GUI" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI"]
+layout_mode = 2
+
+[node name="Bars" type="VBoxContainer" parent="GUI/HBoxContainer"]
+layout_mode = 2
+
+[node name="Bar" type="HBoxContainer" parent="GUI/HBoxContainer/Bars"]
+layout_mode = 2
+
+[node name="Count" type="MarginContainer" parent="GUI/HBoxContainer/Bars/Bar"]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="GUI/HBoxContainer/Bars/Bar/Count"]
+layout_mode = 2
+
+[node name="Title" type="TextureRect" parent="GUI/HBoxContainer/Bars/Bar/Count"]
+layout_mode = 2
+texture = ExtResource("1_55mpy")
+expand_mode = 4
+
+[node name="Number" type="Label" parent="GUI/HBoxContainer/Bars/Bar/Count"]
+layout_mode = 2
+text = "100$"
+
+[node name="Counters" type="HBoxContainer" parent="GUI/HBoxContainer"]
+layout_mode = 2
