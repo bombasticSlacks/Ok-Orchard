@@ -7,14 +7,13 @@ class_name Plot extends StaticBody2D
 @export var unlocked: bool = false
 # If this is built
 @export var built: bool = false
+# Plots Have An Attraction
+@onready var attraction: Attraction = $Attraction
 
 # Has name through StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Plots Have An Attraction
-	var attraction: Attraction = $Attraction
-
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
