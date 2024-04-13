@@ -1,0 +1,33 @@
+//Grass main and outline
+const grass1 = "#90db44";
+const grass2 = "#2f9e20";
+
+//Path main and outline
+const path1 = "#b06838";
+const path2 = "#8a4819";
+
+//UI BG and Outline
+const uiMain = "#f2e18d";
+const uiOutline = "#8f2929";
+
+//Some other color pairings
+const blue1 = "#3498db";
+const blue2 = "#2980b9";
+
+const purp1 = "#a6519f";
+const purp2 = "#2980b9";
+
+const red1 = "#eb3c2d";
+const red2 = "#bd281a";
+
+const orange1 = "#e37f14";
+const orange2 = "#c25207";
+
+//Grayscale
+const grey1 = "#ecf0f1";
+const grey2 = "#bdc3c7";
+const grey3 = "#95a5a6";
+const grey4 = "#7f8c8d";
+
+const black1 = "#34495e";
+const black2 = "#05182b";
