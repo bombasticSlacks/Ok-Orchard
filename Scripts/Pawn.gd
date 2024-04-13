@@ -35,7 +35,7 @@ func _ready():
 			attractions.append(attraction)
 	
 	# Get a timer so we can register ticks
-	var timer = get_node("/root/Timer")
+	# var timer = get_node("/root/Timer")
 	# timer.timeout.connect(_tick)
 
 func actor_setup():
