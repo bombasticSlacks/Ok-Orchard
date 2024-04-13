@@ -11,6 +11,7 @@ var dayColor
 var clock
 var daytime_ambience
 var nighttime_ambience
+var money_display
 
 # Plots the game tracks
 @export var plots: Plot
@@ -34,6 +35,8 @@ func _ready():
 	clock = get_node("UI/Clock")
 	daytime_ambience = get_node("DaytimeAmbience")
 	nighttime_ambience = get_node("NighttimeAmbience")
+	money_display = get_node("UI/MoneyDisplay")
+	player = get_node("Player")
 	timer.timeout.connect(_tick)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -81,6 +84,7 @@ func _tick():
 
 	var formatted_time = _format_time(current_hour, current_minute)
 	clock.set_text(formatted_time)
+	money_display.set_text(String.num_int64(player.money) + "$")
 
 	if current_ticks >= day_ticks:
 		current_ticks = 0
