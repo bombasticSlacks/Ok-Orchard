@@ -18,6 +18,8 @@ class_name Plot extends StaticBody2D
 @onready var buy_tree_menu: Control = $BuyTree
 @onready var tree_button: Button = $BuyTree/PanelContainer/BoxContainer/HBoxContainer/Button
 
+@onready var plot_color: Polygon2D = $Polygon2D
+
 # Player
 @onready var player: Player = $/root/main/Player
 
@@ -36,6 +38,10 @@ func _ready():
 	# Load up potential trees
 	var tempTree: AppleTree = tree.instantiate()
 	trees.append(tempTree)
+	
+	# Set Plot Color
+	if(plot_color):
+		plot_color.color = Color("eb3c2d")
 	
 	# Attach some buttons
 	var rect: ColorRect = $ColorRect
@@ -69,6 +75,7 @@ func _buy_plot():
 		unlocked = true
 		player.money -= unlock_cost
 		buy_menu.visible = false
+		plot_color.color = Color("3498db")
 
 func _buy_tree():
 	var index = 0
@@ -77,6 +84,7 @@ func _buy_tree():
 		player.money -= trees[index].cost
 		# Add tree to the plot
 		add_child(trees[index])
+		plot_color.visible = false
 		
 		buy_tree_menu.visible = false
 
@@ -86,6 +94,6 @@ func _clicked():
 	if !unlocked:
 		buy_menu.visible = true
 		buy_label.set_text("Plot Costs: " + String.num_int64(unlock_cost) + "$")
-	else:
+	elif !built:
 		buy_tree_menu.visible = true
 		buy_tree_label.set_text("Tree Costs: " + String.num_int64(trees[0].cost) + "$")

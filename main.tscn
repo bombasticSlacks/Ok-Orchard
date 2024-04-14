@@ -60,6 +60,10 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Polygon2D" type="Polygon2D" parent="TileMap/Plot"]
+color = Color(0.921569, 0.235294, 0.176471, 1)
+polygon = PackedVector2Array(-24, 0, 0, 13, 26, 0, 0, -13)
+
 [node name="Plot2" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
 position = Vector2(64, 128)
@@ -142,6 +146,10 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Polygon2D" type="Polygon2D" parent="TileMap/Plot3"]
+color = Color(0.921569, 0.235294, 0.176471, 1)
+polygon = PackedVector2Array(-24, 0, 0, 13, 26, 0, 0, -13)
+
 [node name="Plot4" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
 position = Vector2(-64, 64)
@@ -180,6 +188,10 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="TileMap/Plot4"]
+color = Color(0.647059, 0.0352941, 0, 0.431373)
+polygon = PackedVector2Array(-24, 0, 0, 13, 26, 0, 0, -13)
 
 [node name="Plot5" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
@@ -220,6 +232,10 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Polygon2D" type="Polygon2D" parent="TileMap/Plot5"]
+color = Color(0.647059, 0.0352941, 0, 0.431373)
+polygon = PackedVector2Array(-24, 0, 0, 13, 26, 0, 0, -13)
+
 [node name="Plot6" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
 position = Vector2(-64, -64)
@@ -258,6 +274,10 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="TileMap/Plot6"]
+color = Color(0.647059, 0.0352941, 0, 0.431373)
+polygon = PackedVector2Array(-24, 0, 0, 13, 26, 0, 0, -13)
 
 [node name="Plot7" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
@@ -298,6 +318,10 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Polygon2D" type="Polygon2D" parent="TileMap/Plot7"]
+color = Color(0.647059, 0.0352941, 0, 0.431373)
+polygon = PackedVector2Array(-24, 0, 0, 13, 26, 0, 0, -13)
+
 [node name="Plot8" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
 position = Vector2(192, -64)
@@ -337,6 +361,10 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Polygon2D" type="Polygon2D" parent="TileMap/Plot8"]
+color = Color(0.647059, 0.0352941, 0, 0.431373)
+polygon = PackedVector2Array(-24, 0, 0, 13, 26, 0, 0, -13)
+
 [node name="Plot9" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
 position = Vector2(320, 0)
@@ -375,6 +403,10 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="TileMap/Plot9"]
+color = Color(0.647059, 0.0352941, 0, 0.431373)
+polygon = PackedVector2Array(-24, 0, 0, 13, 26, 0, 0, -13)
 
 [node name="PawnStart" parent="TileMap" instance=ExtResource("5_ytaj6")]
 position = Vector2(264, 168)
