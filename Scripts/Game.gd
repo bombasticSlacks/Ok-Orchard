@@ -88,7 +88,7 @@ func _tick():
 	current_ticks = current_ticks+1
 	
 	# Check If We Spawn More Pawns
-	if pawns.size() < 10 && randf() > .95:
+	if pawns.size() < 10 && current_ticks < day_ticks && randf() > .95:
 		var pawn = pawn_setup.instantiate()
 		pawn.transform = entrance_transform
 		tile_map.add_child(pawn)
@@ -125,4 +125,14 @@ func _start_day():
 # stuff that happens when the day ends
 func _end_day():
 	# TODO Night Stuff
+	
+	# Set pawns in park to start leaving
+	for pawn in pawns:
+		pawn.set_leaving()
+	
 	_start_day()
+	
+# removes a pawn from the current array
+func unload_pawn(pawn: Pawn):
+	pawns.erase(pawn)
+	pawn.queue_free()

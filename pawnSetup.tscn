@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlx77rrwosh4s"]
+[gd_scene load_steps=7 format=3 uid="uid://dlx77rrwosh4s"]
 
 [ext_resource type="Script" path="res://Scripts/Pawn.gd" id="1_x0tin"]
 [ext_resource type="Texture2D" uid="uid://bdgm8ga1cokek" path="res://Assets/PawnBase.png" id="2_jqr17"]
+[ext_resource type="Texture2D" uid="uid://c6n05xopn60y0" path="res://Assets/PawnDots.png" id="3_n0x5q"]
+[ext_resource type="Texture2D" uid="uid://e7uf0wx8t32u" path="res://Assets/PawnDress.png" id="4_p1cpr"]
+[ext_resource type="Texture2D" uid="uid://bupvujobs0k8j" path="res://Assets/PawnStripe.png" id="5_6jloj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_juk74"]
 radius = 2.0
@@ -11,6 +14,7 @@ z_index = 1
 position = Vector2(-131, -36)
 motion_mode = 1
 script = ExtResource("1_x0tin")
+spriteArray = Array[Texture2D]([ExtResource("2_jqr17"), ExtResource("3_n0x5q"), ExtResource("4_p1cpr"), ExtResource("5_6jloj")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -14)
