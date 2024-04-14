@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlx77rrwosh4s"]
+
+[ext_resource type="Script" path="res://Scripts/Pawn.gd" id="1_x0tin"]
+[ext_resource type="Texture2D" uid="uid://bdgm8ga1cokek" path="res://Assets/PawnBase.png" id="2_jqr17"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_juk74"]
+radius = 2.0
+
+[node name="Pawn" type="CharacterBody2D"]
+z_index = 1
+position = Vector2(-131, -36)
+motion_mode = 1
+script = ExtResource("1_x0tin")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("2_jqr17")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 0.5)
+shape = SubResource("CircleShape2D_juk74")
+disabled = true
