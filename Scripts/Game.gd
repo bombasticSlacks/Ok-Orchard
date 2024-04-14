@@ -126,3 +126,8 @@ func _start_day():
 func _end_day():
 	# TODO Night Stuff
 	_start_day()
+	
+# removes a pawn from the current array
+func unload_pawn(pawn: Pawn):
+	pawns.erase(pawn)
+	pawn.queue_free()
