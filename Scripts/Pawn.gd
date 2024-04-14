@@ -126,7 +126,7 @@ func _think():
 		movement_target_position = global_position + Vector2(randf_range(-150, 150), randf_range(-150, 150))
 		current_target = null
 	else:
-		# shift location down just slightly
+		# randomize location slightly
 		movement_target_position = best.global_position + + Vector2(randf_range(-15, 15), randf_range(-15, 15))
 		current_target = best
 	set_movement_target(movement_target_position)
