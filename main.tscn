@@ -1,18 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx3k80toaks7p"]
-
+[gd_scene load_steps=9 format=3 uid="uid://dx3k80toaks7p"]
 
 [ext_resource type="PackedScene" uid="uid://dq131ceghv4bt" path="res://orchard.tscn" id="1_5bpqt"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_nahm6"]
 [ext_resource type="Script" path="res://Scripts/Plot.gd" id="4_wgdl0"]
 [ext_resource type="Texture2D" uid="uid://du1wx4xcmn602" path="res://Assets/TreeBase.png" id="5_822cv"]
-[ext_resource type="AudioStream" uid="uid://bfcdq82b3wajb" path="res://Assets/birds.mp3" id="7_gxyii"]
-[ext_resource type="AudioStream" uid="uid://44dtet58v8lh" path="res://Assets/night-ambience.mp3" id="8_52myp"]
 [ext_resource type="PackedScene" uid="uid://dlx77rrwosh4s" path="res://pawnSetup.tscn" id="5_ytaj6"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="7_dj4wc"]
+[ext_resource type="AudioStream" uid="uid://bfcdq82b3wajb" path="res://Assets/birds.mp3" id="7_gxyii"]
+[ext_resource type="AudioStream" uid="uid://44dtet58v8lh" path="res://Assets/night-ambience.mp3" id="8_52myp"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("pawns")]
 script = ExtResource("1_nahm6")
-pawns = [NodePath("")]
+pawns = [NodePath("TileMap/PawnStart")]
 
 [node name="TileMap" parent="." instance=ExtResource("1_5bpqt")]
 position = Vector2(28, 13)
@@ -126,10 +125,8 @@ polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
 
 [node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot9"]
 
-[node name="Entrance" type="Polygon2D" parent="TileMap"]
-polygon = PackedVector2Array(224, 160, 255, 176, 287, 160, 256, 144)
-
-[node name="Pawn2" parent="TileMap" instance=ExtResource("5_ytaj6")]
+[node name="PawnStart" parent="TileMap" instance=ExtResource("5_ytaj6")]
+position = Vector2(264, 168)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true

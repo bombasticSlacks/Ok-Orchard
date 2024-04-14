@@ -22,3 +22,4 @@ debug_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_juk74")
+disabled = true

@@ -13,8 +13,9 @@ var daytime_ambience
 var nighttime_ambience
 var money_display
 
-@onready var entrance: Polygon2D = $TileMap/Entrance
 @onready var tile_map: TileMap = $TileMap
+
+@onready var entrance_transform: Transform2D = pawns[0].transform
 
 # Preload Pawn Setup
 var pawn_setup = preload("res://pawnSetup.tscn")
@@ -87,9 +88,9 @@ func _tick():
 	current_ticks = current_ticks+1
 	
 	# Check If We Spawn More Pawns
-	if randf() > .0:
+	if pawns.size() < 10 && randf() > .95:
 		var pawn = pawn_setup.instantiate()
-		pawn.global_position = entrance.global_position
+		pawn.transform = entrance_transform
 		tile_map.add_child(pawn)
 		pawns.append(pawn)
 	
@@ -116,10 +117,9 @@ func _start_day():
 	current_ticks = 0
 	
 	# Clear any pawns still in the park
-	if pawns.size() > 0:
-		for pawn in pawns:
-			pawn.queue_free()
-		pawns.clear()
+	for pawn in pawns:
+		pawn.queue_free()
+	pawns.clear()
 	
 	
 # stuff that happens when the day ends
