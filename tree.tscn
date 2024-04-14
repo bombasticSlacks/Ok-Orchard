@@ -1,11 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://cau0dgbr453mi"]
 
-[ext_resource type="Script" path="res://Scripts/Tree.gd" id="1_0m1pt"]
+[ext_resource type="Script" path="res://Scripts/AppleTree.gd" id="1_6i3ka"]
 [ext_resource type="Texture2D" uid="uid://du1wx4xcmn602" path="res://Assets/TreeBase.png" id="2_b7pif"]
 [ext_resource type="Texture2D" uid="uid://d1cyeq3vdm5k4" path="res://Assets/apple.png" id="3_r0lcs"]
 
 [node name="TreeNode" type="Node2D"]
-script = ExtResource("1_0m1pt")
+script = ExtResource("1_6i3ka")
+cost = 50
 
 [node name="Tree" type="Sprite2D" parent="."]
 position = Vector2(0, -32)

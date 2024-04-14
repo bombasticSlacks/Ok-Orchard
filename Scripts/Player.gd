@@ -2,7 +2,7 @@
 class_name Player extends Node
 
 # How Much Money The Player Has
-@export var money: int = 0
+@export var money: int = 150
 # Track your upgrades I don't think this array can be typed
 var upgrades: Array
 
