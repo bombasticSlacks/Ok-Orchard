@@ -5,13 +5,19 @@ class_name Game extends Node
 @export var player: Player
 
 # Generated Pawns For The Current Day
-var pawns: Array
+@export var pawns: Array[Pawn]
 var timer
 var dayColor
 var clock
 var daytime_ambience
 var nighttime_ambience
 var money_display
+
+@onready var entrance: Polygon2D = $TileMap/Entrance
+@onready var tile_map: TileMap = $TileMap
+
+# Preload Pawn Setup
+var pawn_setup = preload("res://pawnSetup.tscn")
 
 # Plots the game tracks
 @export var plots: Plot
@@ -38,6 +44,9 @@ func _ready():
 	money_display = get_node("UI/MoneyDisplay")
 	player = get_node("Player")
 	timer.timeout.connect(_tick)
+	
+	# Call start day once
+	_start_day()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -74,7 +83,17 @@ func _adjust_ambience(current_hour, current_minute):
 
 # Simplified Processing Only Runs When A Root Level Timer Finishes
 func _tick():
+	# Count Ticks
 	current_ticks = current_ticks+1
+	
+	# Check If We Spawn More Pawns
+	if randf() > .0:
+		var pawn = pawn_setup.instantiate()
+		pawn.global_position = entrance.global_position
+		tile_map.add_child(pawn)
+		pawns.append(pawn)
+	
+	# Calculate Time Stuff
 	var time = _conv_time(current_ticks, start_sunrise_hour)
 
 	var current_hour = time[0]
@@ -82,9 +101,28 @@ func _tick():
 	_set_day_color(current_hour, current_minute)
 	_adjust_ambience(current_hour, current_minute)
 
+	# Format Displays
 	var formatted_time = _format_time(current_hour, current_minute)
 	clock.set_text(formatted_time)
 	money_display.set_text(String.num_int64(player.money) + "$")
 
+	# Check If The Day Is Over
 	if current_ticks >= day_ticks:
-		current_ticks = 0
+		_end_day()
+
+# stuff that happens when the day starts
+func _start_day():
+	# Reset ticks timer
+	current_ticks = 0
+	
+	# Clear any pawns still in the park
+	if pawns.size() > 0:
+		for pawn in pawns:
+			pawn.queue_free()
+		pawns.clear()
+	
+	
+# stuff that happens when the day ends
+func _end_day():
+	# TODO Night Stuff
+	_start_day()
