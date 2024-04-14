@@ -5,9 +5,16 @@ var movement_speed: float = 40.0
 # Current Target Position
 @export var movement_target_position: Vector2 = Vector2(40.0, 500.0)
 var idle: bool = false
+# Time till a pawn thinks
+const think_ticks = 30
+var tick_count = think_ticks
+
+var current_target: Plot
 
 # Our Navigation Routines
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+
+@onready var player: Player = get_node("/root/main/Player")
 
 # All Attractions
 var attractions: Array[Plot]
@@ -17,6 +24,7 @@ var attractions: Array[Plot]
 # Uninterested has a higher weight for doing nothing
 # Walker likes to go farther away 
 enum Mood {HUNGRY, UNINTERESTED, WALKER}
+	
 
 func _ready():
 	# These values need to be adjusted for the actor's speed
@@ -34,9 +42,8 @@ func _ready():
 		if attraction.built:
 			attractions.append(attraction)
 	
-	# Get a timer so we can register ticks
-	# var timer = get_node("/root/Timer")
-	# timer.timeout.connect(_tick)
+	var timer = get_node("/root/main/Timer")
+	timer.timeout.connect(_tick)
 
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -53,10 +60,9 @@ func _physics_process(delta):
 	if navigation_agent.is_navigation_finished():
 		# If we are idle just skip movement
 		if (!idle):
+			idle = true
 			velocity = Vector2()
 			_spend()
-			# TODO Remove with timer
-			_think()
 		return
 		
 
@@ -68,10 +74,16 @@ func _physics_process(delta):
 
 # Simplified Processing Only Runs When A Root Level Timer Finishes
 func _tick():
-	pass
+	tick_count -= 1
+	if tick_count <= 0:
+		_think()
+
 
 # Think About Where To Go Next
 func _think():
+	# Stop being idle
+	idle = false
+	
 	# We want to go to something of interest
 	var best: Plot
 	
@@ -80,9 +92,19 @@ func _think():
 	
 	best = attractions.pick_random()
 	
-	movement_target_position = best.global_position
+	if current_target && best.name == current_target.name:
+		movement_target_position = global_position + Vector2(randf_range(-150, 150), randf_range(-150, 150))
+		current_target = null
+	else:
+		movement_target_position = best.global_position
+		current_target = best
 	set_movement_target(movement_target_position)
+
+	
+	# Reset Counter
+	tick_count = think_ticks
 
 # Spend Money When Arriving
 func _spend():
-	pass
+	# TODO define money a tree is worth
+	player.money += 10
