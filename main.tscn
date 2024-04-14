@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dx3k80toaks7p"]
+[gd_scene load_steps=10 format=3 uid="uid://dx3k80toaks7p"]
 
 [ext_resource type="PackedScene" uid="uid://dq131ceghv4bt" path="res://orchard.tscn" id="1_5bpqt"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_nahm6"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bdgm8ga1cokek" path="res://Assets/PawnBase.png" id="3_blutb"]
 [ext_resource type="Script" path="res://Scripts/Plot.gd" id="4_wgdl0"]
 [ext_resource type="Texture2D" uid="uid://du1wx4xcmn602" path="res://Assets/TreeBase.png" id="5_822cv"]
+[ext_resource type="AudioStream" uid="uid://bfcdq82b3wajb" path="res://Assets/birds.mp3" id="7_gxyii"]
+[ext_resource type="AudioStream" uid="uid://44dtet58v8lh" path="res://Assets/night-ambience.mp3" id="8_52myp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l58xx"]
 radius = 2.0
@@ -138,7 +140,6 @@ wait_time = 0.3
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 offset = Vector2(100, 100)
 zoom = Vector2(2, 2)
 
@@ -163,3 +164,12 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0.470588, 0.407843)
+
+[node name="DaytimeAmbience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_gxyii")
+volume_db = -80.0
+autoplay = true
+
+[node name="NighttimeAmbience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_52myp")
+autoplay = true
