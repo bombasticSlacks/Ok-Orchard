@@ -185,7 +185,6 @@ grow_vertical = 1
 z_index = 1
 position = Vector2(-192, 0)
 script = ExtResource("4_wgdl0")
-built = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Plot5"]
 scale = Vector2(0.8, 0.8)
@@ -225,7 +224,6 @@ grow_vertical = 1
 z_index = 1
 position = Vector2(-64, -64)
 script = ExtResource("4_wgdl0")
-built = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Plot6"]
 scale = Vector2(0.8, 0.8)
@@ -304,7 +302,6 @@ grow_vertical = 1
 z_index = 1
 position = Vector2(192, -64)
 script = ExtResource("4_wgdl0")
-built = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Plot8"]
 scale = Vector2(0.8, 0.8)
