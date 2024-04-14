@@ -165,6 +165,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
+mouse_default_cursor_shape = 1
 color = Color(0, 0, 0.470588, 0.407843)
 
 [node name="DaytimeAmbience" type="AudioStreamPlayer2D" parent="."]

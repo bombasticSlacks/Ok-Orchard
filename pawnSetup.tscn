@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlx77rrwosh4s"]
+[gd_scene load_steps=9 format=3 uid="uid://dlx77rrwosh4s"]
 
 [ext_resource type="Script" path="res://Scripts/Pawn.gd" id="1_x0tin"]
 [ext_resource type="Texture2D" uid="uid://bdgm8ga1cokek" path="res://Assets/PawnBase.png" id="2_jqr17"]
 [ext_resource type="Texture2D" uid="uid://c6n05xopn60y0" path="res://Assets/PawnDots.png" id="3_n0x5q"]
 [ext_resource type="Texture2D" uid="uid://e7uf0wx8t32u" path="res://Assets/PawnDress.png" id="4_p1cpr"]
 [ext_resource type="Texture2D" uid="uid://bupvujobs0k8j" path="res://Assets/PawnStripe.png" id="5_6jloj"]
+[ext_resource type="Script" path="res://Scripts/spriteClick.gd" id="6_485xo"]
+[ext_resource type="PackedScene" uid="uid://bnxxm1ktbi4vq" path="res://execute.tscn" id="7_ycdo2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_juk74"]
 radius = 2.0
@@ -20,6 +22,15 @@ spriteArray = Array[Texture2D]([ExtResource("2_jqr17"), ExtResource("3_n0x5q"), 
 position = Vector2(0, -14)
 texture = ExtResource("2_jqr17")
 
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -8.0
+offset_top = -10.0
+offset_right = 8.0
+offset_bottom = 17.0
+mouse_default_cursor_shape = 2
+color = Color(0.203922, 0.596078, 0.858824, 0)
+script = ExtResource("6_485xo")
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
 
@@ -27,3 +38,10 @@ debug_enabled = true
 scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_juk74")
 disabled = true
+
+[node name="Control" parent="." instance=ExtResource("7_ycdo2")]
+offset_left = 11.0
+offset_top = -30.0
+offset_right = 11.0
+offset_bottom = -30.0
+scale = Vector2(0.400206, 0.400206)
