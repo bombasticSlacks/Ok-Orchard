@@ -47,6 +47,7 @@ polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
 [node name="Plot2" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 position = Vector2(64, 128)
 script = ExtResource("4_wgdl0")
+built = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Plot2"]
 scale = Vector2(0.8, 0.8)
