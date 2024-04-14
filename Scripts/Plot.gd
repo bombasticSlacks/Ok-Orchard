@@ -14,12 +14,17 @@ class_name Plot extends StaticBody2D
 @onready var button: Button = $BuyPlot/PanelContainer/BoxContainer/HBoxContainer/Button
 
 # Buy Tree UI
-@onready var buy_tree_label: Label = $BuyPlot/PanelContainer/BoxContainer/Label
-@onready var buy_tree_menu: Control = $BuyPlot
-@onready var tree_button: Button = $BuyPlot/PanelContainer/BoxContainer/HBoxContainer/Button
+@onready var buy_tree_label: Label = $BuyTree/PanelContainer/BoxContainer/Label
+@onready var buy_tree_menu: Control = $BuyTree
+@onready var tree_button: Button = $BuyTree/PanelContainer/BoxContainer/HBoxContainer/Button
 
 # Player
 @onready var player: Player = $/root/main/Player
+
+# Preload Tree Node
+var tree = preload("res://tree.tscn")
+
+var trees: Array[AppleTree]
 
 # Plots Have An Attraction
 #@onready var attraction: Attraction = $Attraction
@@ -28,6 +33,10 @@ class_name Plot extends StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Load up potential trees
+	var tempTree: AppleTree = tree.instantiate()
+	trees.append(tempTree)
+	
 	# Attach some buttons
 	var rect: ColorRect = $ColorRect
 	if(rect):
@@ -51,7 +60,8 @@ func _tick():
 	# update UI if we can afford the plot
 	if(button):
 		button.disabled = player.money < unlock_cost
-		
+	if(tree_button):
+		button.disabled = player.money < trees[0].cost
 
 # Happens when the plot is purchased
 func _buy_plot():
@@ -61,7 +71,14 @@ func _buy_plot():
 		buy_menu.visible = false
 
 func _buy_tree():
-	buy_tree_menu.visible = false
+	var index = 0
+	if trees.size() > 0 && player.money >= trees[index].cost:
+		built = true
+		player.money -= trees[index].cost
+		# Add tree to the plot
+		add_child(trees[index])
+		
+		buy_tree_menu.visible = false
 
 # Happens when the plot is clicked
 func _clicked():
@@ -71,4 +88,4 @@ func _clicked():
 		buy_label.set_text("Plot Costs: " + String.num_int64(unlock_cost) + "$")
 	else:
 		buy_tree_menu.visible = true
-		buy_tree_label.set_text("TEMP")
+		buy_tree_label.set_text("Tree Costs: " + String.num_int64(trees[0].cost) + "$")
