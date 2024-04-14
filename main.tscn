@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dq131ceghv4bt" path="res://orchard.tscn" id="1_5bpqt"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_nahm6"]
 [ext_resource type="Script" path="res://Scripts/Plot.gd" id="4_wgdl0"]
-[ext_resource type="Texture2D" uid="uid://du1wx4xcmn602" path="res://Assets/TreeBase.png" id="5_822cv"]
-[ext_resource type="PackedScene" uid="uid://dlx77rrwosh4s" path="res://pawnSetup.tscn" id="5_ytaj6"]
+[ext_resource type="PackedScene" uid="uid://dnhxb56yh4fdu" path="res://tree.tscn" id="5_loxrt"]
+[ext_resource type="PackedScene" path="res://pawnSetup.tscn" id="5_ytaj6"]
 [ext_resource type="PackedScene" uid="uid://be2a30u0lm0su" path="res://StatusScene.tscn" id="6_du6vv"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="7_dj4wc"]
 [ext_resource type="AudioStream" uid="uid://bfcdq82b3wajb" path="res://Assets/birds.mp3" id="7_gxyii"]
@@ -27,8 +27,6 @@ script = ExtResource("4_wgdl0")
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot"]
-
 [node name="Plot2" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
 position = Vector2(64, 128)
@@ -39,9 +37,7 @@ built = true
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot2"]
-position = Vector2(0, -32)
-texture = ExtResource("5_822cv")
+[node name="TreeNode" parent="TileMap/Plot2" instance=ExtResource("5_loxrt")]
 
 [node name="Plot3" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
@@ -52,8 +48,6 @@ script = ExtResource("4_wgdl0")
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot3"]
-
 [node name="Plot4" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
 position = Vector2(-64, 64)
@@ -62,8 +56,6 @@ script = ExtResource("4_wgdl0")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Plot4"]
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
-
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot4"]
 
 [node name="Plot5" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
@@ -75,20 +67,19 @@ built = true
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot5"]
-position = Vector2(0, -32)
-texture = ExtResource("5_822cv")
+[node name="TreeNode" parent="TileMap/Plot5" instance=ExtResource("5_loxrt")]
 
 [node name="Plot6" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
 position = Vector2(-64, -64)
 script = ExtResource("4_wgdl0")
+built = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Plot6"]
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot6"]
+[node name="TreeNode" parent="TileMap/Plot6" instance=ExtResource("5_loxrt")]
 
 [node name="Plot7" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
@@ -98,8 +89,6 @@ script = ExtResource("4_wgdl0")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Plot7"]
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
-
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot7"]
 
 [node name="Plot8" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
@@ -111,9 +100,7 @@ built = true
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot8"]
-position = Vector2(0, -32)
-texture = ExtResource("5_822cv")
+[node name="TreeNode" parent="TileMap/Plot8" instance=ExtResource("5_loxrt")]
 
 [node name="Plot9" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
@@ -124,8 +111,6 @@ script = ExtResource("4_wgdl0")
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/Plot9"]
-
 [node name="PawnStart" parent="TileMap" instance=ExtResource("5_ytaj6")]
 position = Vector2(264, 168)
 
@@ -135,8 +120,8 @@ wait_time = 0.3
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(100, 100)
-zoom = Vector2(2, 2)
+offset = Vector2(100, 0)
+zoom = Vector2(1.4, 1.4)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
