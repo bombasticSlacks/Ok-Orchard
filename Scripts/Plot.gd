@@ -34,7 +34,10 @@ func _ready():
 		rect.clicked.connect(_clicked)
 
 	if(button):
-		button.pressed.connect(_buy)
+		button.pressed.connect(_buy_plot)
+		
+	if(tree_button):
+		tree_button.pressed.connect(_buy_tree)
 		
 	# Setup ticks
 	var timer = get_node("/root/main/Timer")
@@ -51,11 +54,14 @@ func _tick():
 		
 
 # Happens when the plot is purchased
-func _buy():
+func _buy_plot():
 	if player.money >= unlock_cost:
 		unlocked = true
 		player.money -= unlock_cost
 		buy_menu.visible = false
+
+func _buy_tree():
+	buy_tree_menu.visible = false
 
 # Happens when the plot is clicked
 func _clicked():
@@ -63,3 +69,6 @@ func _clicked():
 	if !unlocked:
 		buy_menu.visible = true
 		buy_label.set_text("Plot Costs: " + String.num_int64(unlock_cost) + "$")
+	else:
+		buy_tree_menu.visible = true
+		buy_tree_label.set_text("TEMP")
