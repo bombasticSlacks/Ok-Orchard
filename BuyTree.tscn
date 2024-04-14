@@ -1,13 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://cewtgytecggxn"]
+[gd_scene load_steps=11 format=3 uid="uid://cewtgytecggxn"]
 
 [ext_resource type="Script" path="res://Scripts/closeButton.gd" id="1_up7uu"]
+[ext_resource type="FontFile" uid="uid://cexk6d3v607b5" path="res://Assets/fonts/FjallaOne-Regular.ttf" id="1_x4at3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbt07"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
 bg_color = Color(0.94902, 0.882353, 0.552941, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.184314, 0.619608, 0.12549, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_d6hhe"]
 font_color = Color(0.203922, 0.286275, 0.368627, 1)
@@ -85,7 +96,6 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="Control" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,8 +107,8 @@ grow_vertical = 2
 layout_mode = 0
 offset_left = 25.0
 offset_top = -32.0
-offset_right = 153.0
-offset_bottom = 26.0
+offset_right = 175.0
+offset_bottom = 43.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nbt07")
 
 [node name="BoxContainer" type="BoxContainer" parent="PanelContainer"]
@@ -107,6 +117,15 @@ vertical = true
 
 [node name="Label" type="Label" parent="PanelContainer/BoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("1_x4at3")
+theme_override_font_sizes/font_size = 40
 text = "Plot Costs: #$"
 label_settings = SubResource("LabelSettings_d6hhe")
 horizontal_alignment = 1
