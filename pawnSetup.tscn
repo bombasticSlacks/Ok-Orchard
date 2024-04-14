@@ -32,7 +32,6 @@ color = Color(0.203922, 0.596078, 0.858824, 0)
 script = ExtResource("6_485xo")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 0.5)
