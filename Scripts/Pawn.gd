@@ -11,6 +11,9 @@ var patience: float = .2
 enum states {LEAVING, MOVING, IDLE}
 var current_state: states = states.IDLE
 
+# Check if we are bouncing up or down
+var bounce_state = true
+
 # Time till a pawn thinks
 const think_ticks = 30
 var tick_count = think_ticks
@@ -19,6 +22,8 @@ var tick_count = think_ticks
 var tiredness: int = 0
 
 var current_target: Plot
+
+@export var spriteArray: Array[Texture2D]
 
 # Our Navigation Routines
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
@@ -29,6 +34,8 @@ var current_target: Plot
 @onready var player: Player = get_node("/root/main/Player")
 
 @onready var starting_position: Vector2
+
+@onready var sprite: Sprite2D = $Sprite2D
 
 
 # All Attractions
@@ -61,6 +68,10 @@ func _ready():
 	
 	var timer = get_node("/root/main/Timer")
 	timer.timeout.connect(_tick)
+	
+	# Randomize Our Style
+	sprite.texture = spriteArray.pick_random()
+	sprite.modulate = Color(randf(), randf(), randf())
 
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -79,6 +90,7 @@ func _physics_process(delta):
 			# If we have made it to the location stop moving
 			states.MOVING:
 				current_state = states.IDLE
+				sprite.scale.y = 1.0
 				velocity = Vector2()
 				_spend()
 			# If we have made it to the exit leave
@@ -87,6 +99,18 @@ func _physics_process(delta):
 		# If we aren't navigating then don't give velocity
 		return
 		
+	# Bounce Slightly
+	const bounce_speed = .8
+	
+	if bounce_state:
+		sprite.scale.y += bounce_speed * delta
+		if sprite.scale.y > 1.1:
+			bounce_state = false
+	else:
+		sprite.scale.y -= bounce_speed * delta
+		if sprite.scale.y < 1:
+			bounce_state = true
+			
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 
