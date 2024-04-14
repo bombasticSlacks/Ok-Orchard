@@ -36,6 +36,9 @@ var current_target: Plot
 @onready var starting_position: Vector2
 
 @onready var sprite: Sprite2D = $Sprite2D
+
+@onready var menu: Control = $Control
+
 # Preload Spending UI
 var spendUI = preload("res://Spend.tscn")
 
@@ -68,8 +71,17 @@ func _ready():
 		if attraction.built:
 			attractions.append(attraction)
 	
+	# Register Timer
 	var timer = get_node("/root/main/Timer")
 	timer.timeout.connect(_tick)
+	
+	# Register Clicks
+	var rect = $Sprite2D/ColorRect
+	rect.clicked.connect(_clicked)
+	
+	# Register Menu Buttons
+	var button = $Control/PanelContainer/BoxContainer/Button
+	button.pressed.connect(_execute)
 	
 	# Randomize Our Style
 	sprite.texture = spriteArray.pick_random()
@@ -177,3 +189,10 @@ func set_leaving():
 	# If we are leaving we want to set a leaving location and stop thinking
 	movement_target_position = starting_position
 	set_movement_target(movement_target_position)
+	
+# activates when clicked
+func _clicked():
+	menu.visible = true
+	
+func _execute():
+	game.unload_pawn(self)
