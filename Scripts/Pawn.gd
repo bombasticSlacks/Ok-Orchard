@@ -6,7 +6,7 @@ var movement_speed: float = 40.0
 var movement_target_position: Vector2 = Vector2(40.0, 500.0)
 
 # How patient a pawn will be with seeing lots of stuff
-var patience: float = .02
+var patience: float = .2
 
 enum states {LEAVING, MOVING, IDLE}
 var current_state: states = states.IDLE
@@ -108,10 +108,7 @@ func _think():
 	
 	# Check if we've decided to leave
 	if randf() < tiredness * patience:
-		current_state = states.LEAVING
-		# If we are leaving we want to set a leaving location and stop thinking
-		movement_target_position = starting_position
-		set_movement_target(movement_target_position)
+		set_leaving()
 		return
 	
 	# Mark being more tired
@@ -130,7 +127,7 @@ func _think():
 		current_target = null
 	else:
 		# shift location down just slightly
-		movement_target_position = best.global_position + Vector2(0, 5)
+		movement_target_position = best.global_position + + Vector2(randf_range(-15, 15), randf_range(-15, 15))
 		current_target = best
 	set_movement_target(movement_target_position)
 	current_state = states.MOVING
@@ -143,3 +140,10 @@ func _think():
 func _spend():
 	# TODO define money a tree is worth
 	player.money += 10
+	
+# Set this pawn to be leaving the park
+func set_leaving():
+	current_state = states.LEAVING
+	# If we are leaving we want to set a leaving location and stop thinking
+	movement_target_position = starting_position
+	set_movement_target(movement_target_position)
