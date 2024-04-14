@@ -61,7 +61,7 @@ func _tick():
 	if(button):
 		button.disabled = player.money < unlock_cost
 	if(tree_button):
-		button.disabled = player.money < trees[0].cost
+		tree_button.disabled = player.money < trees[0].cost
 
 # Happens when the plot is purchased
 func _buy_plot():
