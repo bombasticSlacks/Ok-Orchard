@@ -36,6 +36,8 @@ var current_target: Plot
 @onready var starting_position: Vector2
 
 @onready var sprite: Sprite2D = $Sprite2D
+# Preload Spending UI
+var spendUI = preload("res://Spend.tscn")
 
 
 # All Attractions
@@ -164,6 +166,10 @@ func _think():
 func _spend():
 	# TODO define money a tree is worth
 	player.money += 10
+	
+	# Signify The Pawn Spent Money
+	var spend = spendUI.instantiate()
+	add_child(spend)
 	
 # Set this pawn to be leaving the park
 func set_leaving():
