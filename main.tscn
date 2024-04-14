@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx3k80toaks7p"]
+[gd_scene load_steps=13 format=3 uid="uid://dx3k80toaks7p"]
 
 [ext_resource type="PackedScene" uid="uid://dq131ceghv4bt" path="res://orchard.tscn" id="1_5bpqt"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_nahm6"]
+[ext_resource type="Script" path="res://Scripts/spriteClick.gd" id="4_qbd31"]
 [ext_resource type="Script" path="res://Scripts/Plot.gd" id="4_wgdl0"]
 [ext_resource type="PackedScene" uid="uid://dnhxb56yh4fdu" path="res://tree.tscn" id="5_loxrt"]
 [ext_resource type="PackedScene" path="res://pawnSetup.tscn" id="5_ytaj6"]
 [ext_resource type="PackedScene" uid="uid://be2a30u0lm0su" path="res://StatusScene.tscn" id="6_du6vv"]
+[ext_resource type="PackedScene" uid="uid://0exj6jovxy14" path="res://BuyTree.tscn" id="6_seao4"]
+[ext_resource type="PackedScene" uid="uid://cyydn5bwtpahr" path="res://BuyPlot.tscn" id="6_sgmxh"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="7_dj4wc"]
 [ext_resource type="AudioStream" uid="uid://bfcdq82b3wajb" path="res://Assets/birds.mp3" id="7_gxyii"]
 [ext_resource type="AudioStream" uid="uid://44dtet58v8lh" path="res://Assets/night-ambience.mp3" id="8_52myp"]
@@ -26,6 +29,30 @@ script = ExtResource("4_wgdl0")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Plot"]
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap"]
+
+[node name="ColorRect" type="ColorRect" parent="TileMap"]
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 20.0
+offset_bottom = 19.0
+mouse_default_cursor_shape = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("4_qbd31")
+
+[node name="BuyPlot" parent="TileMap" instance=ExtResource("6_sgmxh")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = -28.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="BuyTree" parent="TileMap" instance=ExtResource("6_seao4")]
 
 [node name="Plot2" type="StaticBody2D" parent="TileMap" groups=["plots"]]
 z_index = 1
