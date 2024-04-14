@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyydn5bwtpahr"]
+[gd_scene load_steps=10 format=3 uid="uid://sqkyltvnb3od"]
 
 [ext_resource type="Script" path="res://Scripts/closeButton.gd" id="1_j8p3u"]
 
@@ -95,10 +95,10 @@ grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 129.0
-offset_bottom = 60.0
+offset_left = 29.0
+offset_top = -41.0
+offset_right = 157.0
+offset_bottom = 17.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nbt07")
 
 [node name="BoxContainer" type="BoxContainer" parent="PanelContainer"]
