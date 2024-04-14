@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx3k80toaks7p"]
+[gd_scene load_steps=10 format=3 uid="uid://dx3k80toaks7p"]
 
 [ext_resource type="PackedScene" uid="uid://dq131ceghv4bt" path="res://orchard.tscn" id="1_5bpqt"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_nahm6"]
 [ext_resource type="Script" path="res://Scripts/Plot.gd" id="4_wgdl0"]
 [ext_resource type="PackedScene" uid="uid://dnhxb56yh4fdu" path="res://tree.tscn" id="5_loxrt"]
 [ext_resource type="PackedScene" path="res://pawnSetup.tscn" id="5_ytaj6"]
+[ext_resource type="PackedScene" uid="uid://be2a30u0lm0su" path="res://StatusScene.tscn" id="6_du6vv"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="7_dj4wc"]
 [ext_resource type="AudioStream" uid="uid://bfcdq82b3wajb" path="res://Assets/birds.mp3" id="7_gxyii"]
 [ext_resource type="AudioStream" uid="uid://44dtet58v8lh" path="res://Assets/night-ambience.mp3" id="8_52myp"]
@@ -140,6 +141,14 @@ offset_bottom = 91.0
 theme_override_font_sizes/normal_font_size = 33
 text = "6:00"
 
+[node name="DayDisplay" type="RichTextLabel" parent="UI"]
+offset_left = 9.0
+offset_top = 77.0
+offset_right = 150.0
+offset_bottom = 124.0
+theme_override_font_sizes/normal_font_size = 33
+text = "6:00"
+
 [node name="DayLayer" type="CanvasLayer" parent="UI"]
 
 [node name="DayColor" type="ColorRect" parent="UI/DayLayer"]
@@ -150,7 +159,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
+mouse_default_cursor_shape = 1
 color = Color(0, 0, 0.470588, 0.407843)
+
+[node name="Control" parent="UI" instance=ExtResource("6_du6vv")]
 
 [node name="DaytimeAmbience" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_gxyii")
