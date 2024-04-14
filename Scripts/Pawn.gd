@@ -106,7 +106,10 @@ func _physics_process(delta):
 				current_state = states.IDLE
 				sprite.scale.y = 1.0
 				velocity = Vector2()
-				_spend()
+				if current_target != null:
+					var tree = current_target.get_node("TreeNode")
+					if tree != null and tree.remove_apple() >= 0:
+						_spend(tree.apple_cost)
 			# If we have made it to the exit leave
 			states.LEAVING:
 				game.unload_pawn(self)
@@ -175,9 +178,9 @@ func _think():
 	tick_count = think_ticks
 
 # Spend Money When Arriving
-func _spend():
+func _spend(apple_cost):
 	# TODO define money a tree is worth
-	player.money += 10
+	player.money += apple_cost
 	
 	# Signify The Pawn Spent Money
 	var spend = spendUI.instantiate()
