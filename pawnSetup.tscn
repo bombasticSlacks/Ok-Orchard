@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://e7uf0wx8t32u" path="res://Assets/PawnDress.png" id="4_p1cpr"]
 [ext_resource type="Texture2D" uid="uid://bupvujobs0k8j" path="res://Assets/PawnStripe.png" id="5_6jloj"]
 [ext_resource type="Script" path="res://Scripts/spriteClick.gd" id="6_485xo"]
-[ext_resource type="PackedScene" uid="uid://bnxxm1ktbi4vq" path="res://execute.tscn" id="7_ycdo2"]
+[ext_resource type="PackedScene" path="res://execute.tscn" id="7_ycdo2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_juk74"]
 radius = 2.0

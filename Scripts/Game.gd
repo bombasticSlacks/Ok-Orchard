@@ -41,11 +41,20 @@ var end_sunset_hour = 22
 var max_day_color_alpha = 0.4
 var min_db = -40
 
+var plot_state = []
+
 # Pause for nighttime
 var paused = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var scene_collection = tile_map.tile_set.get_source(1)
+	if scene_collection is TileSetScenesCollectionSource:
+		for i in scene_collection.get_scene_tiles_count():
+			var id = scene_collection.get_scene_tile_id(i)
+			var scene = scene_collection.get_scene_tile_scene(id)
+			print(scene)
+			
 	# Get a timer so we can register ticks
 	timer = get_node("Timer")
 	dayColor = get_node("UI/DayLayer/DayColor")

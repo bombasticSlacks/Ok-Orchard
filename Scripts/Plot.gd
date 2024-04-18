@@ -35,6 +35,7 @@ var trees: Array[AppleTree]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Test!")
 	# Load up potential trees
 	var tempTree: AppleTree = tree.instantiate()
 	trees.append(tempTree)
