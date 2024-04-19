@@ -1,22 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1ua2mqpeuosi"]
+[gd_scene load_steps=5 format=3 uid="uid://b1ua2mqpeuosi"]
 
 [ext_resource type="Script" path="res://Scripts/Plot.gd" id="1_doq3p"]
-[ext_resource type="PackedScene" uid="uid://cau0dgbr453mi" path="res://tree.tscn" id="2_8w5ym"]
 [ext_resource type="Script" path="res://Scripts/spriteClick.gd" id="3_n1ii1"]
-[ext_resource type="PackedScene" path="res://BuyPlot.tscn" id="4_f7u4i"]
-[ext_resource type="PackedScene" path="res://BuyTree.tscn" id="5_4kkn6"]
+[ext_resource type="PackedScene" uid="uid://d4jrw1e12lymb" path="res://BuyPlot.tscn" id="4_f7u4i"]
+[ext_resource type="PackedScene" uid="uid://csadjhfomw86n" path="res://BuyTree.tscn" id="5_4kkn6"]
 
 [node name="Plot" type="StaticBody2D" groups=["plots"]]
+y_sort_enabled = true
 script = ExtResource("1_doq3p")
-unlocked = true
-built = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-31, 0, 0, 16, 32, 0, 0, -16)
-
-[node name="TreeNode" parent="." instance=ExtResource("2_8w5ym")]
-z_index = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -35,6 +30,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("3_n1ii1")
 
 [node name="BuyPlot" parent="." instance=ExtResource("4_f7u4i")]
+z_index = 3
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -42,6 +38,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="BuyTree" parent="." instance=ExtResource("5_4kkn6")]
+z_index = 3
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0

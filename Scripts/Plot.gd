@@ -35,7 +35,6 @@ var trees: Array[AppleTree]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Test!")
 	# Load up potential trees
 	var tempTree: AppleTree = tree.instantiate()
 	trees.append(tempTree)
@@ -44,6 +43,14 @@ func _ready():
 	if(plot_color):
 		plot_color.color = Color("eb3c2d")
 	
+	#starting trees
+	if(built):
+		var index = 0
+		# Add tree to the plot
+		trees[index].add_apple()
+		add_child(trees[index])
+		plot_color.visible = false
+
 	# Attach some buttons
 	var rect: ColorRect = $ColorRect
 	if(rect):

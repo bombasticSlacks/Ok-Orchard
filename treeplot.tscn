@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ge5t2oh42rt"]
+
+[ext_resource type="PackedScene" uid="uid://b1ua2mqpeuosi" path="res://plot.tscn" id="1_06e7m"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Plot" parent="." instance=ExtResource("1_06e7m")]
+unlocked = true
+built = true

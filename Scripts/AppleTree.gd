@@ -21,7 +21,7 @@ func _ready():
 	var timer = get_node("/root/main/Timer")
 	for apple_num in 5:
 		apple_sprites.append(get_node(str("Tree/Apple", apple_num)))
-
+	_draw_apples()
 	timer.timeout.connect(_tick)
 
 func _draw_apples():
@@ -30,7 +30,6 @@ func _draw_apples():
 
 func add_apple():
 	apple_count = apple_count + 1
-	_draw_apples()
 	return apple_count;
 
 #Failing to pick from an empty tree returns -1
@@ -47,4 +46,5 @@ func _tick():
 	current_tick = current_tick + 1
 	if current_tick == apple_regrow_time:
 		add_apple()
+		_draw_apples()
 		current_tick = 0

@@ -19,6 +19,7 @@ script = ExtResource("1_x0tin")
 spriteArray = Array[Texture2D]([ExtResource("2_jqr17"), ExtResource("3_n0x5q"), ExtResource("4_p1cpr"), ExtResource("5_6jloj")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -14)
 texture = ExtResource("2_jqr17")
 
