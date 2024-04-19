@@ -168,8 +168,9 @@ func _think():
 		current_target = null
 	else:
 		# randomize location slightly
-		movement_target_position = best.global_position + + Vector2(randf_range(-15, 15), randf_range(-15, 15))
-		current_target = best
+		if best != null:
+			movement_target_position = best.global_position + + Vector2(randf_range(-15, 15), randf_range(-15, 15))
+			current_target = best
 	set_movement_target(movement_target_position)
 	current_state = states.MOVING
 

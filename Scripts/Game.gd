@@ -41,6 +41,8 @@ var end_sunset_hour = 22
 var max_day_color_alpha = 0.4
 var min_db = -40
 
+var plot_state = []
+
 # Pause for nighttime
 var paused = false
 
