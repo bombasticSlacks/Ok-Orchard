@@ -17,10 +17,10 @@ var money_display
 
 @onready var entrance_transform: Transform2D = pawns[0].transform
 
-@onready var next_day: Control = $UI/Control
-@onready var next_day_label: Label = $UI/Control/PanelContainer/BoxContainer/Label
+@onready var next_day: Control = $UI/StatusScene
+@onready var next_day_label: Label = $UI/StatusScene/BoxContainer/Label
 
-@onready var day_display: RichTextLabel = $UI/DayDisplay
+@onready var day_display: RichTextLabel = $UI/Panel/VBoxContainer/DayDisplay
 
 # Preload Pawn Setup
 var pawn_setup = preload("res://pawnSetup.tscn")
@@ -51,15 +51,15 @@ func _ready():
 	# Get a timer so we can register ticks
 	timer = get_node("Timer")
 	dayColor = get_node("UI/DayLayer/DayColor")
-	clock = get_node("UI/Clock")
+	clock = get_node("UI/Panel/VBoxContainer/Clock")
 	daytime_ambience = get_node("DaytimeAmbience")
 	nighttime_ambience = get_node("NighttimeAmbience")
-	money_display = get_node("UI/MoneyDisplay")
+	money_display = get_node("UI/Panel/VBoxContainer/MoneyDisplay")
 	player = get_node("Player")
 	timer.timeout.connect(_tick)
 	
 	# Assign a button from UI
-	var button: Button = $UI/Control/PanelContainer/BoxContainer/Button
+	var button: Button = $UI/StatusScene/BoxContainer/Button
 	button.pressed.connect(_start_day)
 	
 	# Call start day once
@@ -125,7 +125,7 @@ func _tick():
 	# Format Displays
 	var formatted_time = _format_time(current_hour, current_minute)
 	clock.set_text(formatted_time)
-	money_display.set_text(String.num_int64(player.money) + "$")
+	money_display.set_text("$" + String.num_int64(player.money))
 
 	# Check If The Day Is Over
 	if current_ticks >= day_ticks:
@@ -138,7 +138,6 @@ func _start_day():
 	paused = false
 	day_display.set_text("Day: " + String.num_int64(current_day))
 	
-	
 	# Reset ticks timer
 	current_ticks = 0
 	
@@ -146,8 +145,8 @@ func _start_day():
 	for pawn in pawns:
 		pawn.queue_free()
 	pawns.clear()
-	
-	
+
+
 # stuff that happens when the day ends
 func _end_day():
 	# Set Menu UI
