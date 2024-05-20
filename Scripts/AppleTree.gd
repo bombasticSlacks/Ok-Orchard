@@ -17,12 +17,17 @@ var apple_sprites = []
 # Different Sprites For Different Phases
 enum Growth {PLANTED, GROWING, GROWN}
 
-func _ready():
+func _enter_tree():
 	var timer = get_node("/root/main/Timer")
 	for apple_num in 5:
 		apple_sprites.append(get_node(str("Tree/Apple", apple_num)))
 	_draw_apples()
 	timer.timeout.connect(_tick)
+
+func _exit_tree():
+	var timer = get_node("/root/main/Timer")
+	timer.timeout.disconnect(_tick)
+	apple_count = 0
 
 func _draw_apples():
 	for apple_num in 5:

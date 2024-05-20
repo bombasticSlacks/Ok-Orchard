@@ -30,8 +30,13 @@ func show_buy_menu(plot, mouse_position):
 	self.position = mouse_position
 	if current_selected_plot.unlocked and not current_selected_plot.built:
 		buy_label.set_text("Tree Costs: $" + String.num_int64(current_selected_plot.trees[0].cost))
+		buy_button.text = "Buy"
+	elif current_selected_plot.unlocked and current_selected_plot.built:
+		buy_label.set_text("Remove tree?")
+		buy_button.text = "Delete"
 	elif not current_selected_plot.unlocked:
 		buy_label.set_text("Plot Costs: $" + String.num_int64(current_selected_plot.unlock_cost))
+		buy_button.text = "Buy"
 
 	self.visible = true
 
@@ -41,9 +46,11 @@ func _hide_buy_menu():
 
 func _buy():
 	if current_selected_plot:
-		if current_selected_plot.unlocked:
+		if current_selected_plot.unlocked and not current_selected_plot.built:
 			current_selected_plot.buy_tree()
-		else:
+		elif current_selected_plot.unlocked and current_selected_plot.built:
+			current_selected_plot.remove_tree()
+		elif not current_selected_plot.unlocked:
 			current_selected_plot.buy_plot()
 		_hide_buy_menu()
 

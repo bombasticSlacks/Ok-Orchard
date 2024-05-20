@@ -55,6 +55,11 @@ func buy_tree():
 		add_child(trees[index])
 		plot_color.visible = false
 
+func remove_tree():
+	remove_child(trees[0])
+	built = false
+	plot_color.visible = true
+
 # Happens when the plot is purchased
 func buy_plot():
 	if player.money >= unlock_cost:
